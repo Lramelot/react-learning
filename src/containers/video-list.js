@@ -1,28 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { VideoListItem } from '../components/video-list-item';
 
-export class VideoList extends Component {
-  constructor(props) {
-      super(props);
-
-      this.state = { 
-          films: [
-            'Un magnifique film',
-            'Un deuxième magnifique film',
-            'Encore un'
-          ] 
+export const VideoList = ({movies}) => {
+  return (
+    <ul>
+      {
+        movies.map(movie => <VideoListItem key={movie.id} movie={movie}/>)
       }
-  }
-
-  render() {
-    return (
-        <ul>
-            {
-              this.state.films.map(film => <VideoListItem name={film}></VideoListItem>)
-            }
-        </ul>
-    )
-  }
+    </ul>
+  )
 }
 
 export default VideoList
