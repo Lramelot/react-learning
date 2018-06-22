@@ -40,10 +40,16 @@ class App extends Component {
     })
   }
 
+  receivedCallback(movie) {
+    this.setState({
+      selectedMovie: movie
+    }, () => this.applyVideoToSelectedMovie());
+  }
+
   render() {
     const renderVideoList = () => {
       if (this.state.moviesList.length > 4) {
-        return <VideoList movies={this.state.moviesList} />
+        return <VideoList movies={this.state.moviesList} callback={this.receivedCallback.bind(this)} />
       }
     }
 
